@@ -27,3 +27,16 @@ class SwfSeries < ActiveRecord::Base
     self.targets ||= {}
   end
 end
+
+# == Schema Information
+#
+# Table name: swf_series
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  version    :integer
+#  data       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
