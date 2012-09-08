@@ -32,4 +32,8 @@ end
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_swf_series_on_name  (name)
+#
 
