@@ -44,6 +44,11 @@ group :development, :test do
   gem 'annotate'
 end
 
+group :assets do
+  gem 'less'
+end
+
+gem "twitter-bootstrap-rails", :group => :assets
 
 
 
