@@ -2,6 +2,8 @@ class SwfSeries < ActiveRecord::Base
   attr_accessible :data, :name, :version
   store :data, accessors: [:targets]
 
+  has_many :swfs
+
   after_initialize :default_value
 
 
