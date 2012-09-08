@@ -5,4 +5,8 @@ class SwfSeriesController < ApplicationController
 
   def show
   end
+
+  def new
+    @series = SwfSeries.new
+  end
 end
