@@ -1,4 +1,6 @@
 Analyswf::Application.routes.draw do
+  resources :swf_series
+
   get "swf_series/index"
 
   get "swf_series/show"
