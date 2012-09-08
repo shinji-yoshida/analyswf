@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120908125415) do
+ActiveRecord::Schema.define(:version => 20120908130341) do
 
   create_table "offsets", :force => true do |t|
     t.integer  "value"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20120908125415) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "swf_series_id"
+    t.integer  "swf_binary_id"
   end
 
 end
