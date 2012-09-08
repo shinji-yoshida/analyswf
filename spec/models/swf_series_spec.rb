@@ -5,9 +5,9 @@ describe SwfSeries do
   describe 'put_target' do
     it 'データベースに保存される' do
       subject = SwfSeries.new
-      subject.put_target('name', SwfSeries::TargetType::GIF)
+      subject.put_target('name', TargetType::GIF)
       subject.save
-      actual = SwfSeries.find(subject.id).get_target('name').should == SwfSeries::TargetType::GIF
+      actual = SwfSeries.find(subject.id).get_target('name').should == TargetType::GIF
     end
   end
 end
