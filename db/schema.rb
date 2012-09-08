@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120908055001) do
+ActiveRecord::Schema.define(:version => 20120908060821) do
+
+  create_table "offsets", :force => true do |t|
+    t.integer  "value"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "swfs", :force => true do |t|
     t.binary   "data"
