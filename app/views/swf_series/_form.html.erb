@@ -20,6 +20,7 @@
         <%- end -%>
       </select></dd>
     <dd><button onclick="addTarget(); return false;">OK</button></dd>
+    <div id="for_targets"></div>
   </dl>
 
   <div class="actions">
@@ -35,5 +36,7 @@ function addTarget(){
   var value = name + "(" + type + ")";
   var elm = $("<option>").html(value).attr({ value: value });
   $("#targets").append(elm);
+  var target = $("<input>").attr('hidden', true).attr('value', type).attr('id', "target_" + name).attr("name", "target_" + name);
+  $("#for_targets").append(target);
 }
 </script>
