@@ -12,7 +12,14 @@
   <% end %>
   <dl>
     <dt>識別子</dt><dd><%= f.text_field :name %></dd>
-    <dt>ターゲット</dt><dd><%= select_tag :targets, options_for_select(swf_series_targets_options(@series)), size: 20 %></dd>
+    <dt>ターゲット</dt><dd><%= select_tag :targets, options_for_select(swf_series_targets_options(@series)), size: 10 %></dd>
+    <dd><input type="text" id="target_name"></input>
+      <select id="target_type">
+        <%- TargetType::TYPES.each do |key, type| -%>
+          <option value="<%= type %>"><%= type %></option>
+        <%- end -%>
+      </select></dd>
+    <dd><button onclick="addTarget(); return false;">OK</button></dd>
   </dl>
 
   <div class="actions">
@@ -21,3 +28,12 @@
 <% end %>
 
 
+<script type="text/javascript">
+function addTarget(){
+  var name = $("#target_name").attr("value");
+  var type = $("#target_type").children(':selected').text();
+  var value = name + "(" + type + ")";
+  var elm = $("<option>").html(value).attr({ value: value });
+  $("#targets").append(elm);
+}
+</script>
