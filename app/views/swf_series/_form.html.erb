@@ -12,9 +12,12 @@
   <% end %>
   <dl>
     <dt>識別子</dt><dd><%= f.text_field :name %></dd>
+    <dt>ターゲット</dt><dd><%= select_tag :targets, options_for_select(swf_series_targets_options(@series)), size: 20 %></dd>
   </dl>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+

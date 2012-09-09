@@ -9,4 +9,8 @@ class SwfSeriesController < ApplicationController
   def new
     @series = SwfSeries.new
   end
+
+  def edit
+    @series = SwfSeries.find(params[:id])
+  end
 end

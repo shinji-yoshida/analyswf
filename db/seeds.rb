@@ -6,4 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-SwfSeries.create(name: 'good flash', version: 1)
+series = SwfSeries.new(name: 'good flash', version: 1)
+series.put_target('hoge', TargetType::GIF)
+series.save()
