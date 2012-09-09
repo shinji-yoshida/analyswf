@@ -12,4 +12,8 @@ module TargetType
   MULTI_LINE_TEXT = TYPES[:multi_line_text]
   ONE_LINE_TEXT = TYPES[:one_line_text]
   CONTROL =  TYPES[:control]
+
+  def self.encode_target(name, type)
+    "#{name}(#{type})"
+  end
 end
