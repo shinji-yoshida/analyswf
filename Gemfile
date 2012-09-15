@@ -42,6 +42,7 @@ gem 'jquery-rails'
 group :development, :test do
   gem "rspec-rails", ">= 2.3.0"
   gem 'annotate'
+  gem "factory_girl_rails"
 end
 
 group :assets do
