@@ -16,16 +16,9 @@ class SwfSeriesController < ApplicationController
 
   def create
     @series = SwfSeries.new(params[:swf_series])
-    targets = {}
-    p params
-    params.each do |key, value|
-      unless key.match(/^target_/)
-        next
-      end
-      targets[key] = value
-    end
-    targets.each do |key, type|
-      @series.put_target(key.sub(/^target_/, ''), type)
+
+    collect_targets(params).each do |key, type|
+      @series.put_target(key, type)
     end
 
     if @series.save
@@ -33,5 +26,18 @@ class SwfSeriesController < ApplicationController
     else
       render action: "new"
     end
+  end
+
+  private
+
+  def collect_targets(params)
+    targets = {}
+    params.each do |key, value|
+      unless key.match(/^target_/)
+        next
+      end
+      targets[key.sub(/^target_/, '')] = value
+    end
+    return targets
   end
 end
