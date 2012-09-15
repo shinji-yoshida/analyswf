@@ -11,8 +11,9 @@ describe SwfSeriesController do
   end
 
   describe "GET 'show'" do
+    let(:swf_series) {SwfSeries.create()}
     it "returns http success" do
-      get 'show'
+      get 'show', id: swf_series.id
       response.should be_success
     end
   end
