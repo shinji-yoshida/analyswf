@@ -22,9 +22,25 @@ class SwfSeriesController < ApplicationController
     end
 
     if @series.save
-      redirect_to @series, notice: 'Post was successfully created.'
+      redirect_to @series, notice: 'Series was successfully created.'
     else
       render action: "new"
+    end
+  end
+
+  def update
+    @series = SwfSeries.find(params[:id])
+
+    @series.assign_attributes(params[:swf_series])
+
+    collect_targets(params).each do |key, type|
+      @series.put_target(key, type)
+    end
+
+    if @series.save
+      redirect_to @series, notice: 'Series was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
