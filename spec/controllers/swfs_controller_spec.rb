@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe SwfsController do
+  let(:swf_series){ FactoryGirl.create(:swf_series)}
 
   describe "GET 'index'" do
     it "returns http success" do
-      swf_series = SwfSeries.create()
       get 'index', swf_series_id: swf_series.id
       response.should be_success
     end
@@ -19,7 +19,6 @@ describe SwfsController do
 
   describe "GET 'new'" do
     it "returns http success" do
-      swf_series = SwfSeries.create()
       get 'new', swf_series_id: swf_series.id
       response.should be_success
     end
