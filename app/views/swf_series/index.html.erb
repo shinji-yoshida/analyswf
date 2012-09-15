@@ -9,7 +9,7 @@
 
 <% @some_series.each do |series| %>
   <tr>
-    <td><%= link_to "#{series.name}", series %></td>
+    <td><%= swf_series_name_link series %></td>
     <td><%= link_to "編集", edit_swf_series_path(series) %></td>
     <td><%#= link_to 'Destroy', series, method: :delete, data: { confirm: '削除しますか？' } %></td>
   </tr>

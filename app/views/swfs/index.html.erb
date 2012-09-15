@@ -1,2 +1,21 @@
-<h1>Swfs#index</h1>
-<p>Find me in app/views/swfs/index.html.erb</p>
+<h1>swf リスト</h1>
+
+<%= link_to '新規作成', new_swf_path, class: "btn btn-primary" %>
+<table class="table table-striped table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>シリーズ</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @swfs.each do |swf| %>
+      <tr>
+        <td><%= link_to "#{swf.id}", swf %></td>
+        <td><%= swf_series_name_link(swf.swf_series) %></td>
+        <td><%= link_to "編集", edit_swf_series_path(series) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

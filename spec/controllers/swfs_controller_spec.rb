@@ -4,7 +4,8 @@ describe SwfsController do
 
   describe "GET 'index'" do
     it "returns http success" do
-      get 'index'
+      swf_series = SwfSeries.create()
+      get 'index', swf_series_id: swf_series.id
       response.should be_success
     end
   end
@@ -18,7 +19,8 @@ describe SwfsController do
 
   describe "GET 'new'" do
     it "returns http success" do
-      get 'new'
+      swf_series = SwfSeries.create()
+      get 'new', swf_series_id: swf_series.id
       response.should be_success
     end
   end
