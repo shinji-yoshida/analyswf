@@ -1,2 +1,6 @@
-<h1>Swfs#new</h1>
-<p>Find me in app/views/swfs/new.html.erb</p>
+<h1>swf 新規作成</h1>
+
+<%= form_tag({controller: :swfs, action: :create, swf_series_id: @swf_series.id}, {multipart: true}) do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag '登録' %>
+<%- end -%>
