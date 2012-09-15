@@ -1,5 +1,7 @@
 Analyswf::Application.routes.draw do
+
   resources :swf_series
+  resources :swfs
 
   get "swf_series/index"
 
