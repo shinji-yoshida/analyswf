@@ -50,7 +50,7 @@ group :assets do
 end
 
 gem "twitter-bootstrap-rails", :group => :assets
-
+gem "swf_ruby"
 
 
 
