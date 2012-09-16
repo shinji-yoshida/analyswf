@@ -7,6 +7,7 @@ Analyswf::Application.routes.draw do
       get :do_send
     end
   end
+  resources :images
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
