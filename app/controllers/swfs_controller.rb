@@ -31,16 +31,15 @@ class SwfsController < ApplicationController
   private
 
   def create_swf(swf_series, swf_data)
-    swf = swf_series.swfs.build
+    swf = swf_series.swfs.create!
     analyzed = analyze_swf(swf_data)
     analyzed.jpeg_offsets.each do |o|
-      swf.offsets.build(offset_type: TargetType::JPEG, value: o)
+      swf.offsets.create!(offset_type: TargetType::JPEG, value: o)
     end
     analyzed.gif_offsets.each do |o|
-      swf.offsets.build(offset_type: TargetType::GIF, value: o)
+      swf.offsets.create!(offset_type: TargetType::GIF, value: o)
     end
-    swf.build_swf_binary(data: swf_data)
-    swf.save!
+    swf.create_swf_binary!(data: swf_data)
     return swf
   end
 

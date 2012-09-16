@@ -1,2 +1,8 @@
 <h1>SwfBinaries#show</h1>
-<p>Find me in app/views/swf_binaries/show.html.erb</p>
+
+<object data="<%= do_send_swf_binary_url(id: @id) %>" type="application/x-shockwave-flash"
+ width="320" height="240">
+<param name="src" value="flash.swf">
+<param name="autostart" value="true">
+<param name="loop" value="false">
+</object>

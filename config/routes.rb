@@ -2,7 +2,11 @@ Analyswf::Application.routes.draw do
 
   resources :swf_series
   resources :swfs
-  resources :swf_binaries
+  resources :swf_binaries do
+    member do
+      get :do_send
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
