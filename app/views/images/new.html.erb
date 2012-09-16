@@ -1,2 +1,8 @@
-<h1>Images#new</h1>
-<p>Find me in app/views/images/new.html.erb</p>
+<h1>画像　新規作成</h1>
+<%= form_for @image do |f| %>
+  <dl>
+    <dt>名前</dt><dd><%= f.text_field :name %></dd>
+    <dt>画像</dt><dd><%= file_field_tag :file %></dd>
+  </dl>
+  <%= f.submit '作成' %>
+<%- end -%>
