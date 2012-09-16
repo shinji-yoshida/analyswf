@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe SwfsController do
-  let(:swf_series){ FactoryGirl.create(:swf_series)}
+  let(:swf_series){ FactoryGirl.create(:swf_series) }
+  let(:swf){ FactoryGirl.create(:swf) }
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -12,7 +13,7 @@ describe SwfsController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show'
+      get 'show', id: swf
       response.should be_success
     end
   end

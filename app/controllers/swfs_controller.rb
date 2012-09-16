@@ -5,6 +5,8 @@ class SwfsController < ApplicationController
   end
 
   def show
+    @swf = Swf.find(params[:id])
+    @swf_series = @swf.swf_series
   end
 
   def new

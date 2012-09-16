@@ -1,2 +1,16 @@
-<h1>Swfs#show</h1>
-<p>Find me in app/views/swfs/show.html.erb</p>
+<h1>swf 詳細</h1>
+
+<table class="table">
+  <tr><td>ID</td><td><%= @swf.id %></td></tr>
+  <tr><td>シリーズ</td><td><%= swf_series_name_link(@swf_series) %></td></tr>
+</table>
+
+<table class="table">
+  <thead>
+    <tr><td>識別子</td><td>タイプ</td><td>オフセット</td></tr>
+  </thead>
+  <tbody>
+    <%- swf.targets.each do |t| -%>
+    <%- end -%>
+  </tbody>
+</table>
