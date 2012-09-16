@@ -2,6 +2,7 @@ class Swf < ActiveRecord::Base
   attr_accessible :data
   belongs_to :swf_series
   has_one :swf_binary
+  has_many :offsets
 end
 
 # == Schema Information
