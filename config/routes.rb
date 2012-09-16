@@ -2,10 +2,7 @@ Analyswf::Application.routes.draw do
 
   resources :swf_series
   resources :swfs
-
-  get "swf_series/index"
-
-  get "swf_series/show"
+  resources :swf_binaries
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
