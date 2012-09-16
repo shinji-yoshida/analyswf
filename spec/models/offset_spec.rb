@@ -8,12 +8,12 @@ end
 #
 # Table name: offsets
 #
-#  id         :integer          not null, primary key
-#  value      :integer
-#  type       :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  swf_id     :integer
+#  id          :integer          not null, primary key
+#  value       :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  swf_id      :integer
+#  offset_type :string(255)
 #
 # Indexes
 #

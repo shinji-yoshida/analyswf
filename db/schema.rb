@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916040104) do
+ActiveRecord::Schema.define(:version => 20120916110007) do
 
   create_table "offsets", :force => true do |t|
     t.integer  "value"
-    t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "swf_id"
+    t.string   "offset_type"
   end
 
   add_index "offsets", ["swf_id"], :name => "index_offsets_on_swf_id"
