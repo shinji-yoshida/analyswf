@@ -13,6 +13,5 @@ end
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  swf_series_id :integer
-#  swf_binary_id :integer
 #
 
