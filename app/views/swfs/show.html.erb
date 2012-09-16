@@ -11,7 +11,8 @@
     <tr><td>識別子</td><td>タイプ</td><td>オフセット</td></tr>
   </thead>
   <tbody>
-    <%- @swf_series.targets.each do |t| -%>
+    <%- @swf_series.targets.each do |name, type| -%>
+      <tr><td><%= name %></td><td><%= type %></td></tr>
     <%- end -%>
   </tbody>
 </table>
@@ -22,8 +23,8 @@
     <tr><td>オフセット</td><td>ターゲット割り当て</td></tr>
   </thead>
   <tbody>
-    <%- @swf.offsets.each do |o| -%>
-      <tr><%= o.value %></tr><tr></tr>
+    <%- @swf.offsets.select{|o| o.offset_type == TargetType::JPEG}.each do |o| -%>
+      <tr><td><%= o.value %></td><td><%=  %></td></tr>
     <%- end -%>
   </tbody>
 </table>
@@ -34,8 +35,8 @@
     <tr><td>オフセット</td><td>ターゲット割り当て</td></tr>
   </thead>
   <tbody>
-    <%- @swf.offsets.each do |o| -%>
-      <tr><%= o.value %></tr><tr></tr>
+    <%- @swf.offsets.select{|o| o.offset_type == TargetType::GIF}.each do |o| -%>
+      <tr><td><%= o.value %></td><td><%=  %></td></tr>
     <%- end -%>
   </tbody>
 </table>
