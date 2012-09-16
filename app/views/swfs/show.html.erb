@@ -1,16 +1,41 @@
 <h1>swf 詳細</h1>
 
-<table class="table">
+<table class="table table-striped table-bordered">
   <tr><td>ID</td><td><%= @swf.id %></td></tr>
   <tr><td>シリーズ</td><td><%= swf_series_name_link(@swf_series) %></td></tr>
 </table>
 
-<table class="table">
+<h2>ターゲット</h2>
+<table class="table table-striped table-bordered">
   <thead>
     <tr><td>識別子</td><td>タイプ</td><td>オフセット</td></tr>
   </thead>
   <tbody>
-    <%- swf.targets.each do |t| -%>
+    <%- @swf_series.targets.each do |t| -%>
+    <%- end -%>
+  </tbody>
+</table>
+
+<h2>JPEG オフセット</h2>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr><td>オフセット</td><td>ターゲット割り当て</td></tr>
+  </thead>
+  <tbody>
+    <%- @swf.offsets.each do |o| -%>
+      <tr><%= o.value %></tr><tr></tr>
+    <%- end -%>
+  </tbody>
+</table>
+
+<h2>GIF オフセット</h2>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr><td>オフセット</td><td>ターゲット割り当て</td></tr>
+  </thead>
+  <tbody>
+    <%- @swf.offsets.each do |o| -%>
+      <tr><%= o.value %></tr><tr></tr>
     <%- end -%>
   </tbody>
 </table>
