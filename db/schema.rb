@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917060909) do
+ActiveRecord::Schema.define(:version => 20120917085634) do
 
   create_table "images", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120917060909) do
     t.datetime "updated_at",  :null => false
     t.integer  "swf_id"
     t.string   "offset_type"
+    t.string   "target_name"
   end
 
   add_index "offsets", ["swf_id"], :name => "index_offsets_on_swf_id"

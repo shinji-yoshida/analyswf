@@ -13,6 +13,7 @@ end
 #  updated_at  :datetime         not null
 #  swf_id      :integer
 #  offset_type :string(255)
+#  target_name :string(255)
 #
 # Indexes
 #
