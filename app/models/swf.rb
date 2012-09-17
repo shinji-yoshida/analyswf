@@ -3,6 +3,14 @@ class Swf < ActiveRecord::Base
   belongs_to :swf_series
   has_one :swf_binary
   has_many :offsets
+
+  def jpeg_offsets
+    offsets.select{|o| o.offset_type == TargetType::JPEG}
+  end
+
+  def gif_offsets
+    offsets.select{|o| o.offset_type == TargetType::GIF}
+  end
 end
 
 # == Schema Information
