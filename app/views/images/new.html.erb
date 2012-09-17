@@ -2,7 +2,7 @@
 <%= form_for @image, html: {multipart: true} do |f| %>
   <dl>
     <dt>名前</dt><dd><%= f.text_field :name %></dd>
-    <dt>画像</dt><dd><%= file_field_tag :file %></dd>
+    <dt>画像</dt><dd><%= f.file_field :content %></dd>
   </dl>
   <%= f.submit '作成' %>
 <%- end -%>

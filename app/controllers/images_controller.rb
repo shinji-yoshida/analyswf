@@ -13,9 +13,8 @@ class ImagesController < ApplicationController
   end
 
   def create
-    file = params[:file]
-    data = file.read
-    raise ApplicationException.new 'ファイルが空です' if data.blank?
+    image = Image.create!(params[:image])
+    redirect_to action: :show, id: image.id
   end
 
   def delete
