@@ -14,6 +14,14 @@ class SwfSeries < ActiveRecord::Base
     self.targets[name]
   end
 
+  def jpeg_target_names
+    targets.select{|name, type| type == TargetType::JPEG}.keys
+  end
+
+  def gif_target_names
+    targets.select{|name, type| type == TargetType::GIF}.keys
+  end
+
   private
 
   def default_value

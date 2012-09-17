@@ -10,6 +10,44 @@ describe SwfSeries do
       actual = SwfSeries.find(subject.id).get_target('name').should == TargetType::GIF
     end
   end
+
+  describe 'jpeg_target_names' do
+    before do
+      subject = SwfSeries.new
+      subject.put_target('gif name 1', TargetType::GIF)
+      subject.put_target('jpeg name 1', TargetType::JPEG)
+      subject.put_target('jpeg name 2', TargetType::JPEG)
+      @actual = subject.jpeg_target_names
+    end
+
+    it 'jpeg タイプのターゲットの名前の配列を取得する' do
+      @actual.should be_include('jpeg name 1')
+      @actual.should be_include('jpeg name 2')
+    end
+
+    it 'gif タイプのターゲットの名前は取得しない' do
+      @actual.should_not be_include('gif name 1')
+    end
+  end
+
+  describe 'gif_target_names' do
+    before do
+      subject = SwfSeries.new
+      subject.put_target('gif name 1', TargetType::GIF)
+      subject.put_target('gif name 2', TargetType::GIF)
+      subject.put_target('jpeg name 2', TargetType::JPEG)
+      @actual = subject.gif_target_names
+    end
+
+    it 'gif タイプのターゲットの名前の配列を取得する' do
+      @actual.should be_include('gif name 1')
+      @actual.should be_include('gif name 2')
+    end
+
+    it 'jpeg タイプのターゲットの名前は取得しない' do
+      @actual.should_not be_include('jpeg name 1')
+    end
+  end
 end
 
 # == Schema Information
