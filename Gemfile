@@ -51,6 +51,7 @@ end
 
 gem "twitter-bootstrap-rails", :group => :assets
 gem "swf_ruby"
+gem "paperclip", "~> 3.0"
 
 
 
