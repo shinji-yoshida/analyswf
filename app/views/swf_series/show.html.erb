@@ -3,6 +3,9 @@
   <tr><td>タイトル</td><td><%= @series.name %></td></tr>
 </table>
 
+<%= link_to 'swf 一覧', swfs_url(swf_series_id: @series.id), class: 'btn btn-info' %><br>
+<br>
+
 <table class="table table-striped table-bordered">
   <thead>
     <tr><td>識別子</td><td>タイプ</td></tr>
