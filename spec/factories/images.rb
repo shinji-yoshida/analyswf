@@ -4,6 +4,5 @@ FactoryGirl.define do
   factory :image do
     name "MyString"
     image_type "MyString"
-    resource nil
   end
 end
