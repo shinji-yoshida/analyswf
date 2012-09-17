@@ -1,5 +1,5 @@
 <h1>画像　新規作成</h1>
-<%= form_for @image do |f| %>
+<%= form_for @image, html: {multipart: true} do |f| %>
   <dl>
     <dt>名前</dt><dd><%= f.text_field :name %></dd>
     <dt>画像</dt><dd><%= file_field_tag :file %></dd>
