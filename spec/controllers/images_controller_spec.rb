@@ -24,10 +24,10 @@ describe ImagesController do
     end
   end
 
-  describe "GET 'delete'" do
+  describe "DELETE 'destroy'" do
     it "returns http success" do
-      get 'delete'
-      response.should be_success
+      delete 'destroy', id: image.id
+      response.should redirect_to action: :index
     end
   end
 

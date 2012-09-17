@@ -17,6 +17,7 @@ class ImagesController < ApplicationController
     redirect_to action: :show, id: image.id
   end
 
-  def delete
+  def destroy
+    redirect_to action: :index
   end
 end

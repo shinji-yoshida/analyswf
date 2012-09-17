@@ -28,7 +28,7 @@ describe SwfsController do
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get 'edit'
+      get 'edit', id: swf.id
       response.should be_success
     end
   end
