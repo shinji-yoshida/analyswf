@@ -1,2 +1,29 @@
-<h1>Swfs#edit</h1>
-<p>Find me in app/views/swfs/edit.html.erb</p>
+<h1>swf 編集</h1>
+<dl>
+  <dt>ID</dt><dd><%= @swf.id %></dd>
+  <dt>シリーズ</dt><dd><%= @swf.swf_series.name %></dd>
+</dl>
+
+<h2>jpeg オフセット</h2>
+<table class="table  table-striped table-bordered">
+  <thead>
+    <tr><td>No.</td><td>オフセット</td><td>識別子割り当て</td></tr>
+  </thead>
+  <tbody>
+    <%- @swf.jpeg_offsets.each_with_index do |o, i| -%>
+      <tr><td><%= i %></td><td><%= o.value %></td><td><%= select_tag "#{o.value}", options_for_select(@swf.swf_series.jpeg_target_names, o.target_name), include_blank: true %></td></tr>
+    <%- end -%>
+  </tbody>
+</table>
+
+<h2>gif オフセット</h2>
+<table class="table  table-striped table-bordered">
+  <thead>
+    <tr><td>No.</td><td>オフセット</td><td>識別子割り当て</td></tr>
+  </thead>
+  <tbody>
+    <%- @swf.gif_offsets.each_with_index do |o, i| -%>
+      <tr><td><%= i %></td><td><%= o.value %></td><td><%= select_tag "#{o.value}", options_for_select(@swf.swf_series.gif_target_names, o.target_name), include_blank: true %></td></tr>
+    <%- end -%>
+  </tbody>
+</table>

@@ -18,6 +18,7 @@ class SwfsController < ApplicationController
   end
 
   def edit
+    @swf = Swf.find(params[:id])
   end
 
   def create
