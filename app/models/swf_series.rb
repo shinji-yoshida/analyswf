@@ -3,6 +3,7 @@ class SwfSeries < ActiveRecord::Base
   store :data, accessors: [:targets]
 
   has_many :swfs
+  has_many :test_resources
 
   after_initialize :default_value
 
