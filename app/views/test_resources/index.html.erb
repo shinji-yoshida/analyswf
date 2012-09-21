@@ -1,2 +1,3 @@
-<h1>TestResources#index</h1>
-<p>Find me in app/views/test_resources/index.html.erb</p>
+<h1><%= swf_series_name_link(@swf_series) %> の TestResources</h1>
+
+<%= link_to '新規作成', new_test_resource_url(swf_series_id: @swf_series.id) %>

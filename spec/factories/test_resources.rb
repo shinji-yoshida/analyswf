@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :test_resource do
-    swf_series nil
+    swf_series
     image nil
   end
 end
