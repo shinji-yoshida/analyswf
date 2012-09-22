@@ -17,4 +17,8 @@ end
 #  content_file_size    :integer
 #  content_updated_at   :datetime
 #
+# Indexes
+#
+#  index_images_on_name  (name) UNIQUE
+#
 
