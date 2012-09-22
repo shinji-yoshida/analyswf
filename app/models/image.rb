@@ -5,6 +5,14 @@ class Image < ActiveRecord::Base
 
   validates :name, :uniqueness => true
   validates :content, :attachment_presence => true
+
+  def image_type
+    if content_content_type == 'image/jpeg'
+      TargetType::JPEG
+    elsif content_content_type == 'image/gif'
+      TargetType::GIF
+    end
+  end
 end
 
 # == Schema Information

@@ -1,6 +1,18 @@
+# -*- encoding: utf-8 -*-
 require 'spec_helper'
 
 describe Image do
+  describe 'image_type' do
+    it 'content_content_type が image/jpeg なら、 TargetType::JPEG を返す' do
+      subject = FactoryGirl.build(:image, content_content_type: 'image/jpeg')
+      subject.image_type.should == TargetType::JPEG
+    end
+
+    it 'content_content_type が image/gif なら、 TargetType::GIF を返す' do
+      subject = FactoryGirl.build(:image, content_content_type: 'image/gif')
+      subject.image_type.should == TargetType::GIF
+    end
+  end
 end
 
 # == Schema Information
