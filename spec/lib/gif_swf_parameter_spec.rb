@@ -17,4 +17,15 @@ describe GifSwfParameter do
       decoded.test_resource_name == 'hoge'
     end
   end
+
+  describe 'create_replace_target' do
+    it '画像バイナリと offset で SwfRuby::Lossless2ReplaceTarget を作成' do
+      parameter = GifSwfParameter.new(offset: 12, test_resource_name: 'hoge')
+      parameter.stub(:image_path).and_return 'path/to/image'
+      File.should_receive(:binread).with('path/to/image').and_return 'image_binary'
+      SwfRuby::Lossless2ReplaceTarget.should_receive(:new).with(12, 'image_binary').and_return 'result'
+      # exercise
+      parameter.create_replace_target.should == 'result'
+    end
+  end
 end

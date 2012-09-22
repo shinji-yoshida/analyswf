@@ -1,4 +1,5 @@
 require 'swf_parameter'
+require 'swf_ruby'
 
 class ImageSwfParameter < SwfParameter
   attr_reader :offset, :test_resource_name

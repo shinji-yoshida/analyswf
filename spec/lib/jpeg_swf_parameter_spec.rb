@@ -17,4 +17,18 @@ describe JpegSwfParameter do
       decoded.test_resource_name == 'hoge'
     end
   end
+
+  describe 'create_replace_target' do
+    it '画像バイナリと offset で SwfRuby::Jpeg2ReplaceTarget を作成' do
+      parameter = JpegSwfParameter.new(offset: 12, test_resource_name: 'hoge')
+      parameter.stub(:image_path).and_return 'path/to/image'
+      File.should_receive(:binread).with('path/to/image').and_return 'image binary'
+      # exercise
+      target = parameter.create_replace_target
+      #verify
+      target.should be_kind_of SwfRuby::Jpeg2ReplaceTarget
+      target.jpeg.should == 'image binary'
+      target.offset == 12
+    end
+  end
 end
