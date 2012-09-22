@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :image_type, :name
+  attr_accessible :name
   attr_accessible :content
   has_attached_file :content, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
@@ -21,7 +21,6 @@ end
 #
 #  id                   :integer          not null, primary key
 #  name                 :string(255)
-#  image_type           :string(255)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  content_file_name    :string(255)
