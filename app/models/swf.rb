@@ -5,11 +5,15 @@ class Swf < ActiveRecord::Base
   has_many :offsets
 
   def jpeg_offsets
-    offsets.select{|o| o.offset_type == TargetType::JPEG}
+    offsets_of(TargetType::JPEG)
   end
 
   def gif_offsets
-    offsets.select{|o| o.offset_type == TargetType::GIF}
+    offsets_of(TargetType::GIF)
+  end
+
+  def offsets_of(target_type)
+    offsets.select{|o| o.offset_type == target_type}
   end
 end
 

@@ -2,6 +2,9 @@ class TestResource < ActiveRecord::Base
   belongs_to :swf_series
   belongs_to :image
   attr_accessible :image
+
+  delegate :image_type, to: :image
+  delegate :name, to: :image
 end
 
 # == Schema Information

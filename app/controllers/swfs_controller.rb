@@ -19,6 +19,7 @@ class SwfsController < ApplicationController
 
   def edit
     @swf = Swf.find(params[:id])
+    @test_resources = @swf.swf_series.test_resources.all
   end
 
   def create
