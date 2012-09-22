@@ -2,6 +2,9 @@ class Image < ActiveRecord::Base
   attr_accessible :image_type, :name
   attr_accessible :content
   has_attached_file :content, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+  validates :name, :uniqueness => true
+  validates :content, :attachment_presence => true
 end
 
 # == Schema Information

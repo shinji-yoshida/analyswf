@@ -36,9 +36,10 @@ describe TestResourcesController do
 
   describe 'post create' do
     it 'test_resource を作成する' do
-      image = FactoryGirl.create(:image)
-      post 'create', image_id: image.id, swf_series_id: swf_series.id
-      swf_series.test_resources.find_by_image_id(image.id).should be_present
+      stubbed_image = FactoryGirl.build(:image, id: 1)
+      Image.should_receive(:find).with("1").and_return stubbed_image
+      post 'create', image_id: 1, swf_series_id: swf_series.id
+      swf_series.test_resources.find_by_image_id(1).should be_present
     end
   end
 

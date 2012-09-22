@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ImagesController do
-  let(:image) { FactoryGirl.create(:image) }
+  let(:image) { FactoryGirl.build(:image, id: 1) }
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -12,6 +12,7 @@ describe ImagesController do
 
   describe "GET 'show'" do
     it "returns http success" do
+      Image.should_receive(:find).with(image.id.to_s).and_return image
       get 'show', id: image.id
       response.should be_success
     end
