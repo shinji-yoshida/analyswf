@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 require 'fileutils'
 require 'swf_analyzer'
+require 'swf_parameter'
 
 class SwfsController < ApplicationController
   def index
@@ -28,6 +29,10 @@ class SwfsController < ApplicationController
       @swf = create_swf(swf_series, params[:file].read)
     end
     redirect_to action: :show, id: @swf.id
+  end
+
+  def test
+    parameters = SwfParameter.decode_params(params)
   end
 
   private
