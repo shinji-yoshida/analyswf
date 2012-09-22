@@ -9,12 +9,24 @@ class SwfParameter
     end
   end
 
+  def self.decode_params(params)
+    return params.select{|k, v| start_with_encoding_prefix?(k)}.map do |k, v|
+      decode(k, v)
+    end
+  end
+
   def type
     return self.class.type
   end
 
   def encode
     raise 'should implement in subclass'
+  end
+
+  protected
+
+  def self.start_with_encoding_prefix?(s)
+    /^#{ENCODING_PREFIX}/ =~ s
   end
 end
 
