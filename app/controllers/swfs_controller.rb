@@ -47,7 +47,9 @@ class SwfsController < ApplicationController
   end
 
   def test
-    parameters = SwfParameter.decode_params(params)
+    @swf = Swf.find(params[:id])
+    @target_name = params[:target_name]
+    @offset = @swf.offsets.find{|o| o.target_name == @target_name}
   end
 
   private

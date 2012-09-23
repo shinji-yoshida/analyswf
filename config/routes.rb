@@ -1,10 +1,15 @@
 Analyswf::Application.routes.draw do
   root :to => 'swf_series#index'
   resources :swf_series
-  resources :swfs
+  resources :swfs do
+    member do
+      get :test
+    end
+  end
   resources :swf_binaries do
     member do
       get :do_send
+      post :show_replaced
     end
   end
   resources :images

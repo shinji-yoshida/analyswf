@@ -1,0 +1,17 @@
+<h1>swf テスト</h1>
+
+<%= form_tag show_replaced_swf_binary_url(id: @swf.swf_binary.id, offset_id: @offset.id) do %>
+<table class="table table-striped table-bordered">
+  <tr><th>ID</th><td><%= @swf.id %></td></tr>
+  <tr><th>シリーズ</th><td><%= swf_series_name_link(@swf.swf_series) %></td></tr>
+  <tr><th>ターゲット名</th><td><%= @target_name %></td></tr>
+  <tr><th>タイプ</th><td><%= @swf.swf_series.get_target(@target_name) %></td></tr>
+  <tr><th>オフセット</th><td><%= @offset.value %></td></tr>
+  <tr>
+    <th>テスト画像</th>
+    <td><%= select_tag 'select', options_for_select(@swf.swf_series.test_resources.map(&:name)) %></td>
+  </tr>
+</table>
+
+  <%= submit_tag '差し替え' %>
+<%- end -%>

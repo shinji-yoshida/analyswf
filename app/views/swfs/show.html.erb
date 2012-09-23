@@ -19,6 +19,7 @@
         <td><%= name %></td>
         <td><%= type %></td>
         <td><%= @target_name_to_offset_map[name].try(:value) %></td>
+        <td><%= link_to('差し替えテスト', test_swf_url(@swf, target_name: name)) if @target_name_to_offset_map[name].present? %></td>
       </tr>
     <%- end -%>
   </tbody>
