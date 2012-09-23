@@ -24,7 +24,19 @@ class SwfSeries < ActiveRecord::Base
   end
 
   def target_names(target_type)
-    targets.select{|name, type| type == target_type}.keys
+    targets_for(target_type).keys
+  end
+
+  def jpeg_targets
+    targets_for(TargetType::JPEG)
+  end
+
+  def gif_targets
+    targets_for(TargetType::GIF)
+  end
+
+  def targets_for(target_type)
+    targets.select{|name, type| type == target_type}
   end
 
   private

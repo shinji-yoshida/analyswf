@@ -48,6 +48,32 @@ describe SwfSeries do
       @actual.should_not be_include('jpeg name 1')
     end
   end
+
+  describe 'jpeg_targets' do
+    before do
+      @subject = SwfSeries.new
+      @subject.put_target('gif name 1', TargetType::GIF)
+      @subject.put_target('jpeg name 1', TargetType::JPEG)
+      @subject.put_target('jpeg name 2', TargetType::JPEG)
+    end
+
+    it 'jpeg 型のみのハッシュを返す' do
+      Set.new(@subject.jpeg_targets.keys).should == Set.new(@subject.jpeg_target_names)
+    end
+  end
+
+  describe 'gif_targets' do
+    before do
+      @subject = SwfSeries.new
+      @subject.put_target('gif name 1', TargetType::GIF)
+      @subject.put_target('gif name 2', TargetType::GIF)
+      @subject.put_target('jpeg name 1', TargetType::JPEG)
+    end
+
+    it 'gif 型のみのハッシュを返す' do
+      Set.new(@subject.gif_targets.keys).should == Set.new(@subject.gif_target_names)
+    end
+  end
 end
 
 # == Schema Information
