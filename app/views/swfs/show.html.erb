@@ -15,7 +15,11 @@
   </thead>
   <tbody>
     <%- @swf_series.targets.each do |name, type| -%>
-      <tr><td><%= name %></td><td><%= type %></td></tr>
+      <tr>
+        <td><%= name %></td>
+        <td><%= type %></td>
+        <td><%= @target_name_to_offset_map[name].try(:value) %></td>
+      </tr>
     <%- end -%>
   </tbody>
 </table>
