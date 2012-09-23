@@ -10,6 +10,7 @@ Analyswf::Application.routes.draw do
     member do
       get :do_send
       post :show_replaced
+      get :send_replaced
     end
   end
   resources :images

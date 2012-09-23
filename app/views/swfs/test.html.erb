@@ -9,7 +9,7 @@
   <tr><th>オフセット</th><td><%= @offset.value %></td></tr>
   <tr>
     <th>テスト画像</th>
-    <td><%= select_tag 'select', options_for_select(@swf.swf_series.test_resources.map(&:name)) %></td>
+    <td><%= select_tag 'resource_name', options_for_select(@typed_test_resouces.map(&:name)) %></td>
   </tr>
 </table>
 

@@ -50,6 +50,7 @@ class SwfsController < ApplicationController
     @swf = Swf.find(params[:id])
     @target_name = params[:target_name]
     @offset = @swf.offsets.find{|o| o.target_name == @target_name}
+    @typed_test_resouces = @swf.swf_series.test_resources.select{|r| r.image_type == @offset.offset_type}
   end
 
   private
