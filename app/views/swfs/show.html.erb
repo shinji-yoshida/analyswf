@@ -25,26 +25,16 @@
   </tbody>
 </table>
 
-<h2>JPEG オフセット</h2>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr><td>オフセット</td><td>ターゲット割り当て</td></tr>
-  </thead>
-  <tbody>
-    <%- @swf.offsets.select{|o| o.offset_type == TargetType::JPEG}.each do |o| -%>
-      <tr><td><%= o.value %></td><td><%=  %></td></tr>
-    <%- end -%>
-  </tbody>
-</table>
-
-<h2>GIF オフセット</h2>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr><td>オフセット</td><td>ターゲット割り当て</td></tr>
-  </thead>
-  <tbody>
-    <%- @swf.offsets.select{|o| o.offset_type == TargetType::GIF}.each do |o| -%>
-      <tr><td><%= o.value %></td><td><%=  %></td></tr>
-    <%- end -%>
-  </tbody>
-</table>
+<%- [TargetType::JPEG, TargetType::GIF].each do |target_type| -%>
+  <h2><%= target_type %> オフセット</h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr><td>オフセット</td><td>ターゲット割り当て</td></tr>
+    </thead>
+    <tbody>
+      <%- @swf.offsets.select{|o| o.offset_type == target_type}.each do |o| -%>
+        <tr><td><%= o.value %></td><td><%= o.target_name %></td></tr>
+      <%- end -%>
+    </tbody>
+  </table>
+<%- end -%>
