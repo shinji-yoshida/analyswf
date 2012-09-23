@@ -11,10 +11,6 @@ class SwfSeriesController < ApplicationController
     @series = SwfSeries.new
   end
 
-  def edit
-    @series = SwfSeries.find(params[:id])
-  end
-
   def create
     @series = SwfSeries.new(params[:swf_series])
 
@@ -23,25 +19,9 @@ class SwfSeriesController < ApplicationController
     end
 
     if @series.save
-      redirect_to @series, notice: 'Series was successfully created.'
+      redirect_to @series
     else
       render action: "new"
-    end
-  end
-
-  def update
-    @series = SwfSeries.find(params[:id])
-
-    @series.assign_attributes(params[:swf_series])
-
-    collect_targets(params).each do |key, type|
-      @series.put_target(key, type)
-    end
-
-    if @series.save
-      redirect_to @series, notice: 'Series was successfully updated.'
-    else
-      render action: "edit"
     end
   end
 
