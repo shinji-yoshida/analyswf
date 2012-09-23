@@ -13,8 +13,8 @@ describe JpegSwfParameter do
       encoded = JpegSwfParameter.new(offset: 12, test_resource_name: 'hoge').encode
       decoded = JpegSwfParameter.decode(encoded.first[0], encoded.first[1])
       decoded.type.should == TargetType::JPEG
-      decoded.offset == 12
-      decoded.test_resource_name == 'hoge'
+      decoded.offset.should == 12
+      decoded.test_resource_name.should == 'hoge'
     end
   end
 
@@ -28,7 +28,7 @@ describe JpegSwfParameter do
       #verify
       target.should be_kind_of SwfRuby::Jpeg2ReplaceTarget
       target.jpeg.should == 'image binary'
-      target.offset == 12
+      target.offset.should == 12
     end
   end
 end

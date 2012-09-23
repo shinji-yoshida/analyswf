@@ -12,6 +12,6 @@ class SwfProcessor
   end
 
   def replace_images(image_swf_parameters)
-    SwfRuby::SwfTamperer.replace(swf_binary, image_swf_parameters.map(&:create_replace_target))
+    SwfRuby::SwfTamperer.new.replace(swf_binary, image_swf_parameters.map(&:create_replace_target))
   end
 end

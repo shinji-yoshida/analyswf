@@ -17,7 +17,7 @@ describe SwfProcessor do
       parameters = []
       parameters.push stub(create_replace_target: 'target 1')
       parameters.push stub(create_replace_target: 'target 2')
-      SwfRuby::SwfTamperer.should_receive(:replace).with(swf_processor.swf_binary, ['target 1', 'target 2'])
+      SwfRuby::SwfTamperer.any_instance.should_receive(:replace).with(swf_processor.swf_binary, ['target 1', 'target 2'])
       swf_processor.replace_images(parameters)
     end
   end

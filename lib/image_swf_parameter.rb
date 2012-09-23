@@ -5,12 +5,16 @@ class ImageSwfParameter < SwfParameter
   attr_reader :offset, :test_resource_name
 
   def self.decode(key, value)
-    offset = key.sub(/#{ENCODING_PREFIX}#{self.type}/, "").to_i
-    return self.create(offset: offset, test_resource_name: value)
+    _offset = key.sub(/#{ENCODING_PREFIX}#{self.type}_/, "").to_i
+    return self.create(offset: _offset, test_resource_name: value)
   end
 
   def self.create(map)
-    raise 'should implement in subclass'
+    if map[:type] == TargetType::JPEG
+      return JpegSwfParameter.create(map)
+    elsif map[:type] == TargetType::GIF
+      return GifSwfParameter.create(map)
+    end
   end
 
   def initialize(map)
@@ -29,6 +33,6 @@ class ImageSwfParameter < SwfParameter
   end
 
   def image_path
-    TestResource.find_by_name(test_resource_name).image.content.path
+    Image.find_by_name(test_resource_name).content.path
   end
 end

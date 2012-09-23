@@ -13,8 +13,8 @@ describe GifSwfParameter do
       encoded = GifSwfParameter.new(offset: 12, test_resource_name: 'hoge').encode
       decoded = GifSwfParameter.decode(encoded.first[0], encoded.first[1])
       decoded.type.should == TargetType::GIF
-      decoded.offset == 12
-      decoded.test_resource_name == 'hoge'
+      decoded.offset.should == 12
+      decoded.test_resource_name.should == 'hoge'
     end
   end
 
