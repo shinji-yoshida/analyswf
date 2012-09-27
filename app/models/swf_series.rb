@@ -50,12 +50,13 @@ end
 #
 # Table name: swf_series
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  version    :integer
-#  data       :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  version     :integer
+#  data        :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  test_script :text             default(""), not null
 #
 # Indexes
 #
