@@ -1,5 +1,4 @@
 class Offset < ActiveRecord::Base
-  attr_accessible :offset_type, :value
   belongs_to :swf
 end
 
