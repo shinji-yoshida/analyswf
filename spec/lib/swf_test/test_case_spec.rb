@@ -12,4 +12,11 @@ describe SwfTest::TestCase do
       test_case.replace('swf binary').should == expected
     end
   end
+
+  describe 'check_items' do
+    it '複数のチェック項目を返す' do
+      subject = SwfTest::TestCase.new('testing', [], ['check1', 'check2'])
+      subject.check_items.should == ['check1', 'check2']
+    end
+  end
 end
