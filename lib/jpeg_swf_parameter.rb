@@ -1,6 +1,6 @@
-require 'image_swf_parameter'
+require 'replacement/image_swf_parameter'
 
-class JpegSwfParameter < ImageSwfParameter
+class JpegSwfParameter < Replacement::ImageSwfParameter
   def self.type
     return TargetType::JPEG
   end

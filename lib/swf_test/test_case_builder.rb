@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 require 'swf_test/target_already_replaced_error'
-require 'image_swf_parameter'
+require 'replacement'
 
 module SwfTest
   class TestCaseBuilder
@@ -47,11 +47,11 @@ module SwfTest
     end
 
     def create_swf_parameter(target)
-      ImageSwfParameter.create type: @target_type_map[target], offset: @context.offset(target), test_resource_name: @test_resource_name_map[target]
+      Replacement::ImageSwfParameter.create type: @target_type_map[target], offset: @context.offset(target), test_resource_name: @test_resource_name_map[target]
     end
 
     def get_swf_parameter(target)
-      ImageSwfParameter.create type: @target_type_map[target], offset: @context.offset(target), test_resource_name: @test_resource_name_map[target]
+      Replacement::ImageSwfParameter.create type: @target_type_map[target], offset: @context.offset(target), test_resource_name: @test_resource_name_map[target]
     end
 
     def get_check_items

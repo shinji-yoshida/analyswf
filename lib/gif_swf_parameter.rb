@@ -1,6 +1,6 @@
-require 'image_swf_parameter'
+require 'replacement/image_swf_parameter'
 
-class GifSwfParameter < ImageSwfParameter
+class GifSwfParameter < Replacement::ImageSwfParameter
   def self.type
     return TargetType::GIF
   end
