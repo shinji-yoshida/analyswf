@@ -5,7 +5,7 @@ module CustomSwfParameterMatchers
   end
 
   def be_gif_swf_parameter(expected_map)
-    BeImageSwfParameter.new(GifSwfParameter.new(expected_map))
+    BeImageSwfParameter.new(Replacement::GifSwfParameter.new(expected_map))
   end
 
   class BeImageSwfParameter
