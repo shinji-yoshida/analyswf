@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 require 'fileutils'
 require 'hash_extension'
-require 'swf_analyzer'
 require 'replacement'
 
 class SwfsController < ApplicationController
@@ -99,7 +98,7 @@ class SwfsController < ApplicationController
 
   def do_analyze_swf(data)
     File.binwrite(tmp_swf_file, data)
-    result = SwfAnalyzer.analyze_swf(tmp_swf_file)
+    result = Replacement::SwfAnalyzer.analyze_swf(tmp_swf_file)
     delete_tmp_swf_file
     return result
   end
