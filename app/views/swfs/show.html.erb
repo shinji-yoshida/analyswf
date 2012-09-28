@@ -6,7 +6,8 @@
 </table>
 
 <%= link_to 'フラッシュ表示', swf_binary_url(@swf.swf_binary), class: 'btn btn-info' %>
-<%= link_to '編集', edit_swf_url(@swf), class: 'btn' %>
+<%= link_to '編集', edit_swf_url(@swf), class: 'btn btn-warning' %>
+<%= link_to '半自動テスト', swf_swf_test_url(@swf, 0), class: 'btn btn-info' %>
 
 <h2>ターゲット</h2>
 <table class="table table-striped table-bordered">

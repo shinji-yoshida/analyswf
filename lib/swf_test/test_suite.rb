@@ -15,6 +15,10 @@ module SwfTest
       @test_cases[index].description
     end
 
+    def check_items(index)
+      @test_cases[index].check_items
+    end
+
     def size
       @test_cases.size
     end
