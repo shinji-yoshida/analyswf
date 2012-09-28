@@ -33,5 +33,4 @@ module Replacement
   end
 end
 
-require 'jpeg_swf_parameter'
 require 'gif_swf_parameter'

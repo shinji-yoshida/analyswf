@@ -1,7 +1,7 @@
 module CustomSwfParameterMatchers
 
   def be_jpeg_swf_parameter(expected_map)
-    BeImageSwfParameter.new(JpegSwfParameter.new(expected_map))
+    BeImageSwfParameter.new(Replacement::JpegSwfParameter.new(expected_map))
   end
 
   def be_gif_swf_parameter(expected_map)
