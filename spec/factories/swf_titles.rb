@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :swf_title do
-    name "MyString"
+    name "swf series"
   end
 end

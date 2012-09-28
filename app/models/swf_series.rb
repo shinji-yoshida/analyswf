@@ -6,6 +6,8 @@ class SwfSeries < ActiveRecord::Base
   has_many :test_resources
   belongs_to :swf_title
 
+  delegate :name, to: :swf_title
+
   after_initialize :default_value
 
   def put_target(name, target_type)
@@ -52,7 +54,6 @@ end
 # Table name: swf_series
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
 #  version      :integer
 #  data         :text
 #  created_at   :datetime         not null
@@ -62,7 +63,6 @@ end
 #
 # Indexes
 #
-#  index_swf_series_on_name          (name)
 #  index_swf_series_on_swf_title_id  (swf_title_id)
 #
 

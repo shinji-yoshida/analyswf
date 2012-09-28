@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :swf_series do
-    name "swf series"
+    swf_title
   end
 end

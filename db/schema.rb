@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928113437) do
+ActiveRecord::Schema.define(:version => 20120928121707) do
 
   create_table "images", :force => true do |t|
     t.string   "name"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20120928113437) do
   add_index "swf_binaries", ["swf_id"], :name => "index_swf_binaries_on_swf_id"
 
   create_table "swf_series", :force => true do |t|
-    t.string   "name"
     t.integer  "version"
     t.text     "data"
     t.datetime "created_at",                   :null => false
@@ -55,7 +54,6 @@ ActiveRecord::Schema.define(:version => 20120928113437) do
     t.integer  "swf_title_id"
   end
 
-  add_index "swf_series", ["name"], :name => "index_swf_series_on_name"
   add_index "swf_series", ["swf_title_id"], :name => "index_swf_series_on_swf_title_id"
 
   create_table "swf_titles", :force => true do |t|
