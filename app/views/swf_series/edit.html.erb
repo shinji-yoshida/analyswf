@@ -1,0 +1,6 @@
+<h1>テストスクリプト編集</h1>
+
+<%= form_for(@swf_series) do |f| %>
+  <%= f.text_area :test_script, class: 'span8', style: "font-family: monospace" %><br>
+  <%= f.submit '更新', class: 'btn btn-primary' %>
+<%- end -%>

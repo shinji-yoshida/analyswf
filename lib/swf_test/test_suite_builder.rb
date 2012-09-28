@@ -1,4 +1,7 @@
 # -*- encoding: utf-8 -*-
+require 'swf_test/test_suite'
+require 'swf_test/test_case_builder'
+
 module SwfTest
   class TestSuiteBuilder
     def initialize(context)

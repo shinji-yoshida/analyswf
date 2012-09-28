@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 require 'swf_test/target_already_replaced_error'
+require 'image_swf_parameter'
 
 module SwfTest
   class TestCaseBuilder
