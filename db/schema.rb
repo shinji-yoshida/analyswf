@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120927153726) do
+ActiveRecord::Schema.define(:version => 20120928113012) do
 
   create_table "images", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(:version => 20120927153726) do
   end
 
   add_index "swf_series", ["name"], :name => "index_swf_series_on_name"
+
+  create_table "swf_titles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "swfs", :force => true do |t|
     t.datetime "created_at",    :null => false
