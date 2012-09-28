@@ -14,7 +14,7 @@ class SwfBinariesController < ApplicationController
   def show_replaced
     @swf_binary = SwfBinary.find(params[:id])
     @offset = Offset.find(params[:offset_id])
-    @swf_parameter = ImageSwfParameter.create(type: @offset.offset_type, offset: @offset.value, test_resource_name: params[:resource_name])
+    @swf_parameter = Replacement::ImageSwfParameter.create(type: @offset.offset_type, offset: @offset.value, test_resource_name: params[:resource_name])
   end
 
   def send_replaced
