@@ -8,7 +8,7 @@ describe SwfTest::TestCase do
 
     it '与えられた swf_parameters を用いて swf の差し替えを行う' do
       expected = 'expected swf'
-      SwfProcessor.any_instance.should_receive(:replace).with(swf_parameters).and_return expected
+      Replacement::SwfProcessor.any_instance.should_receive(:replace).with(swf_parameters).and_return expected
       test_case.replace('swf binary').should == expected
     end
   end

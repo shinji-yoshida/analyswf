@@ -1,4 +1,4 @@
-require 'swf_processor'
+require 'replacement'
 
 module SwfTest
 
@@ -12,7 +12,7 @@ module SwfTest
     end
 
     def replace(swf)
-      SwfProcessor.new(swf).replace(@swf_parameters)
+      Replacement::SwfProcessor.new(swf).replace(@swf_parameters)
     end
 
     def get_swf_parameters
