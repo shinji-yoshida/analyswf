@@ -1,5 +1,5 @@
 class SwfTitle < ActiveRecord::Base
-  attr_accessible :name
+  has_many :swf_series
 end
 
 # == Schema Information

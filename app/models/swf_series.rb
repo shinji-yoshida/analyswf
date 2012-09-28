@@ -4,6 +4,7 @@ class SwfSeries < ActiveRecord::Base
 
   has_many :swfs
   has_many :test_resources
+  belongs_to :swf_title
 
   after_initialize :default_value
 
@@ -50,16 +51,18 @@ end
 #
 # Table name: swf_series
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  version     :integer
-#  data        :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  test_script :text             default(""), not null
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  version      :integer
+#  data         :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  test_script  :text             default(""), not null
+#  swf_title_id :integer
 #
 # Indexes
 #
-#  index_swf_series_on_name  (name)
+#  index_swf_series_on_name          (name)
+#  index_swf_series_on_swf_title_id  (swf_title_id)
 #
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928113012) do
+ActiveRecord::Schema.define(:version => 20120928113437) do
 
   create_table "images", :force => true do |t|
     t.string   "name"
@@ -49,12 +49,14 @@ ActiveRecord::Schema.define(:version => 20120928113012) do
     t.string   "name"
     t.integer  "version"
     t.text     "data"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.text     "test_script", :default => "", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.text     "test_script",  :default => "", :null => false
+    t.integer  "swf_title_id"
   end
 
   add_index "swf_series", ["name"], :name => "index_swf_series_on_name"
+  add_index "swf_series", ["swf_title_id"], :name => "index_swf_series_on_swf_title_id"
 
   create_table "swf_titles", :force => true do |t|
     t.string   "name"
