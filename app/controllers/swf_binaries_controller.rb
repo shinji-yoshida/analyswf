@@ -1,4 +1,4 @@
-require 'swf_parameter'
+require 'replacement'
 require 'swf_processor'
 
 class SwfBinariesController < ApplicationController
@@ -20,7 +20,7 @@ class SwfBinariesController < ApplicationController
 
   def send_replaced
     swf_binary = SwfBinary.find(params[:id])
-    swf_parameters = SwfParameter.decode_params(params)
+    swf_parameters = Replacement::SwfParameter.decode_params(params)
     processor = SwfProcessor.new swf_binary.data
     response.headers["Content-Type"] = "application/x-shockwave-flash"
     send_data processor.replace(swf_parameters), :type => "swf", :disposition => 'inline'

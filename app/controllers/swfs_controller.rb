@@ -2,7 +2,7 @@
 require 'fileutils'
 require 'hash_extension'
 require 'swf_analyzer'
-require 'swf_parameter'
+require 'replacement'
 
 class SwfsController < ApplicationController
   def index

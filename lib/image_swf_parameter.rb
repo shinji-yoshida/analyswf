@@ -1,7 +1,7 @@
-require 'swf_parameter'
+require 'replacement'
 require 'swf_ruby'
 
-class ImageSwfParameter < SwfParameter
+class ImageSwfParameter < Replacement::SwfParameter
   attr_reader :offset, :test_resource_name
 
   def self.decode(key, value)
