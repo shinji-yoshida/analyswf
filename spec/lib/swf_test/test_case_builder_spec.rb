@@ -2,7 +2,7 @@
 require 'swf_test/test_case_builder'
 
 describe SwfTest::TestCaseBuilder do
-  include(CustomSwfParameterMatchers)
+  include(Replacement::CustomSwfParameterMatchers)
 
   let(:context) {SwfTest::Context.new(nil)}
   let(:subject) {SwfTest::TestCaseBuilder.new(context)}
