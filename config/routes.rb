@@ -5,6 +5,11 @@ Analyswf::Application.routes.draw do
     member do
       get :test
     end
+    resources :swf_tests, only: [:show] do
+      member do
+        get :send_show
+      end
+    end
   end
   resources :swf_binaries do
     member do
