@@ -1,10 +1,11 @@
 class SwfSeries < ActiveRecord::Base
-  attr_accessible :data, :name, :version
   store :data, accessors: [:targets]
 
   has_many :swfs
   has_many :test_resources
   belongs_to :swf_title
+
+  validates :swf_title, presence: true
 
   delegate :name, to: :swf_title
 

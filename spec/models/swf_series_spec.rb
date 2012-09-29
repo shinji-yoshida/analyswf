@@ -3,8 +3,10 @@ require 'spec_helper'
 
 describe SwfSeries do
   describe 'put_target' do
+    let(:swf_title){FactoryGirl.create(:swf_title)}
+
     it 'データベースに保存される' do
-      subject = SwfSeries.new
+      subject = swf_title.swf_series.build
       subject.put_target('name', TargetType::GIF)
       subject.save
       actual = SwfSeries.find(subject.id).get_target('name').should == TargetType::GIF

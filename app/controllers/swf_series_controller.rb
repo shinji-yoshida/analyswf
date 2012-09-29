@@ -3,8 +3,10 @@ require 'replacement'
 require 'swf_test/test_suite_builder'
 
 class SwfSeriesController < ApplicationController
+  before_filter :load_swf_title, only: [:index, :new]
+
   def index
-    @some_series = SwfSeries.all
+    @some_series = @swf_title.swf_series.all
   end
 
   def show
@@ -12,7 +14,7 @@ class SwfSeriesController < ApplicationController
   end
 
   def new
-    @series = SwfSeries.new
+    @series = @swf_title.swf_series.build
   end
 
   def create
@@ -48,6 +50,10 @@ class SwfSeriesController < ApplicationController
   end
 
   private
+
+  def load_swf_title
+    @swf_title = SwfTitle.find(params[:swf_title_id])
+  end
 
   def collect_targets(params)
     targets = {}

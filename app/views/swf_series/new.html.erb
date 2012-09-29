@@ -1,5 +1,47 @@
-<h1>新規作成</h1>
+<h1><%= @series.name %> 新規作成</h1>
 
-<%= render 'form' %>
+<%= form_for(@series) do |f| %>
+  <% if @series.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@series.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @series.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <dl>
+    <dt>タイトル</dt><dd><%= @series.name %></dd>
+    <dt>ターゲット</dt><dd><%= select_tag :targets, options_for_select(swf_series_targets_options(@series)), size: 10 %></dd>
+    <dd><input type="text" id="target_name"></input>
+      <select id="target_type">
+        <%- TargetType::TYPES.each do |key, type| -%>
+          <option value="<%= type %>"><%= type %></option>
+        <%- end -%>
+      </select></dd>
+    <dd><button onclick="addTarget(); return false;">OK</button></dd>
+    <div id="for_targets"></div>
+  </dl>
+  <%= f.hidden_field :swf_title_id %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to '戻る', swf_series_index_path %>
+
+
+<script type="text/javascript">
+function addTarget(){
+  var name = $("#target_name").attr("value");
+  var type = $("#target_type").children(':selected').text();
+  var value = name + "(" + type + ")";
+  var elm = $("<option>").html(value).attr({ value: value });
+  $("#targets").append(elm);
+  var target = $("<input>").attr('hidden', true).attr('value', type).attr('id', "target_" + name).attr("name", "target_" + name);
+  $("#for_targets").append(target);
+}
+</script>
