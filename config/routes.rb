@@ -1,6 +1,6 @@
 Analyswf::Application.routes.draw do
   root :to => 'swf_series#index'
-  resources :swf_titles, only: [:index]
+  resources :swf_titles, only: [:index, :new, :create]
   resources :swf_series
   resources :swfs do
     member do
