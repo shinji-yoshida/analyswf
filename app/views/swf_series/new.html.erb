@@ -1,5 +1,7 @@
 <h1><%= @series.name %> 新規作成</h1>
 
+<%= flash[:alert] %>
+
 <%= form_for(@series) do |f| %>
   <% if @series.errors.any? %>
     <div id="error_explanation">

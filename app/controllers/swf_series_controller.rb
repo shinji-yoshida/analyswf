@@ -20,15 +20,20 @@ class SwfSeriesController < ApplicationController
   def create
     @series = SwfSeries.new(params[:swf_series])
 
-    collect_targets(params).each do |key, type|
-      @series.put_target(key, type)
+    set_swf_series_targets(@series, collect_targets(params))
+
+    swf_title = @series.swf_title
+    swf_title.with_lock do
+      @series.version = get_latest_version(swf_title) + 1
+      @series.save!
+      swf_title.latest_swf_series = @series
+      swf_title.save!
     end
 
-    if @series.save
-      redirect_to @series
-    else
-      render action: "new"
-    end
+    redirect_to @series
+  rescue => e
+    flash[:alert] = e.message
+    render action: "new"
   end
 
   def edit
@@ -53,6 +58,21 @@ class SwfSeriesController < ApplicationController
 
   def load_swf_title
     @swf_title = SwfTitle.find(params[:swf_title_id])
+  end
+
+  def set_swf_series_targets(swf_series, targets)
+    targets.each do |key, type|
+      swf_series.put_target(key, type)
+    end
+  end
+
+  def get_latest_version(swf_title)
+    latest_swf_series = swf_title.latest_swf_series
+    if latest_swf_series.present?
+      return latest_swf_series.version
+    else
+      return 0
+    end
   end
 
   def collect_targets(params)
