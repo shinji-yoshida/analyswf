@@ -8,6 +8,8 @@ class SwfSeries < ActiveRecord::Base
 
   delegate :name, to: :swf_title
 
+  scope :order_by_version_desc, order('version DESC')
+
   after_initialize :default_value
 
   def put_target(name, target_type)

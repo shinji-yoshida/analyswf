@@ -7,6 +7,13 @@ describe SwfTitlesController do
       get 'index'
       response.should be_success
     end
+
+    it "returns http success with some titles" do
+      FactoryGirl.create(:swf_title)
+      FactoryGirl.create(:swf_title)
+      get 'index'
+      response.should be_success
+    end
   end
 
 end
