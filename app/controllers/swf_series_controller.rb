@@ -6,7 +6,7 @@ class SwfSeriesController < ApplicationController
   before_filter :load_swf_title, only: [:index, :new]
 
   def index
-    @some_series = @swf_title.swf_series.all
+    @some_series = @swf_title.swf_series.order_by_version_desc.all
   end
 
   def show

@@ -1,4 +1,4 @@
-<h1>swf title 一覧</h1>
+<h1>swf タイトル一覧</h1>
 
 <%= link_to '新規作成', new_swf_title_url, class: 'btn btn-primary' %><br>
 <br>
@@ -12,8 +12,8 @@
       <tr>
         <td><%= title.id %></td>
         <td><%= title.name %></td>
-        <td><%= swf_titles_latest_swf_series_version(title) %></td>
-        <td><%= link_to 'swf series 一覧', swf_series_index_url(swf_title_id: title.id) %></td>
+        <td><%= swf_titles_latest_swf_series_version_link(title) %></td>
+        <td><%= link_to 'swf シリーズ一覧', swf_series_index_url(swf_title_id: title.id) %></td>
       </tr>
     <% end %>
   </tbody>

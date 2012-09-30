@@ -1,21 +1,23 @@
-<h1>swf リスト</h1>
+<h1><%= @swf_series.name %> シリーズ swf リスト</h1>
 
 <%= link_to '新規作成', new_swf_path(swf_series_id: @swf_series.id), class: "btn btn-primary" %>
 <table class="table table-striped table-striped">
   <thead>
     <tr>
       <th>ID</th>
-      <th>シリーズ</th>
+      <th>バージョン</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @swfs.each do |swf| %>
       <tr>
-        <td><%= link_to "#{swf.id}", swf %></td>
-        <td><%= swf_series_name_link(swf.swf_series) %></td>
-        <td><%= link_to "編集", edit_swf_path(swf) %></td>
+        <td><%= "#{swf.id}" %></td>
+        <td><%= swf.version %></td>
+        <td><%= link_to "詳細", swf %> <%= link_to "編集", edit_swf_path(swf) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'シリーズ一覧', swf_series_index_url(swf_title_id: @swf_series.swf_title.id), class: 'btn btn-info' %>

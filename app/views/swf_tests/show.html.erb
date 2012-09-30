@@ -1,15 +1,22 @@
-<h1>SwfTests#show</h1>
-<h2><%= @test_suite.description(@test_index) %></h2>
-<%= swf_binaries_flash_tag(send_show_swf_swf_test_url(@swf, @test_index)) %>
+<h1><%= @swf.swf_series.name %> swf テスト</h1>
 
-<h3>チェック項目</h3>
-<ul>
-  <%- @test_suite.check_items(@test_index).each do |item| -%>
-    <li><%= item %></li>
-  <%- end -%>
-</ul>
+<%- if @test_suite.size == 0 -%>
+  テストがありません<br>
+  テストスクリプトを編集し、テストを追加してください<br>
+<%- else -%>
 
-<%= link_to "前へ(#{@test_index}/#{@test_suite.size})", swf_swf_test_url(@swf, @test_index - 1), class: 'btn btn-primary' if @test_index > 0 %>
-<%= link_to "次へ(#{@test_index + 2}/#{@test_suite.size})", swf_swf_test_url(@swf, @test_index + 1), class: 'btn btn-primary' if @test_index + 1 < @test_suite.size %><br>
-<%= link_to 'swf詳細', swf_url(@swf), class: 'btn btn-info' %>
+  <h2><%= @test_suite.description(@test_index) %></h2>
+  <%= swf_binaries_flash_tag(send_show_swf_swf_test_url(@swf, @test_index)) %>
 
+  <h3>チェック項目</h3>
+  <ul>
+    <%- @test_suite.check_items(@test_index).each do |item| -%>
+      <li><%= item %></li>
+    <%- end -%>
+  </ul>
+
+  <%= link_to "前へ(#{@test_index}/#{@test_suite.size})", swf_swf_test_url(@swf, @test_index - 1), class: 'btn btn-primary' if @test_index > 0 %>
+  <%= link_to "次へ(#{@test_index + 2}/#{@test_suite.size})", swf_swf_test_url(@swf, @test_index + 1), class: 'btn btn-primary' if @test_index + 1 < @test_suite.size %><br>
+
+<%- end -%>
+<%= link_to 'swf詳細', swf_url(@swf), class: 'btn btn-info' %> <%= link_to 'シリーズ詳細', swf_series_url(@swf.swf_series), class: 'btn btn-info' %>
