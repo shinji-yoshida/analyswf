@@ -15,10 +15,56 @@ module Domain
         swf.setup!('swf data stub')
       end
 
+      it 'version を設定する' do
+        swf.setup!('swf data stub')
+        swf.version.should == 1
+      end
+
+      it 'swf_title の latest_swf を設定する' do
+        swf.setup!('swf data stub')
+        swf.swf_series.swf_title.latest_swf.id.should == swf.id
+      end
+
       it 'swf_binary を生成する' do
         swf.setup!('swf data stub')
         swf.swf_binary.should be_present
         swf.swf_binary.data.should == 'swf data stub'
+      end
+    end
+
+    describe 'set_myself_as_latest_version' do
+      let(:swf_series){FactoryGirl.create(:swf_series)}
+      let(:swf_title){swf_series.swf_title}
+      let(:subject){swf_series.swfs.create}
+      before do
+        subject.extend(Domain::Swf)
+      end
+
+      context '他に swf が存在していた場合' do
+        before do
+          @latest_version = 1
+          latest_swf = swf_series.swfs.create(version: @latest_version)
+          swf_title.latest_swf = latest_swf
+          swf_title.save
+        end
+
+        it 'version を増やす' do
+          subject.send(:set_myself_as_latest_version)
+          subject.version.should == @latest_version + 1
+        end
+      end
+
+      context '他に swf が存在しない場合' do
+        it 'version を 1 にする' do
+          subject.send(:set_myself_as_latest_version)
+          subject.version.should == 1
+        end
+      end
+
+      it 'swf_title の latest_swf を設定する' do
+        subject.send(:set_myself_as_latest_version)
+        swf_title.reload.latest_swf.should be_present
+        swf_title.latest_swf.id.should == subject.id
       end
     end
 

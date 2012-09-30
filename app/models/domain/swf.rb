@@ -1,6 +1,11 @@
 # -*- encoding: utf-8 -*-
 module Domain
   module Swf
+    def self.create_in_transaction(swf_series, swf_data)
+      swf_series.with_lock do
+        return create!(swf_series, swf_data)
+      end
+    end
 
     def self.create!(swf_series, swf_data)
       swf = swf_series.swfs.create!
@@ -12,6 +17,7 @@ module Domain
 
     def setup!(swf_data)
       setup_offsets!(swf_data)
+      set_myself_as_latest_version
       create_swf_binary!(data: swf_data)
     end
 
@@ -53,6 +59,22 @@ module Domain
 
     def delete_tmp_swf_file
       File.delete(tmp_swf_file)
+    end
+
+    def set_myself_as_latest_version
+      swf_title = swf_series.swf_title
+      self.version = previous_latest_version(swf_title) + 1
+      save!
+      swf_title.latest_swf = self
+      swf_title.save!
+    end
+
+    def previous_latest_version(swf_title)
+      if swf_title.latest_swf.present?
+        return swf_title.latest_swf.version
+      else
+        return 0
+      end
     end
   end
 end

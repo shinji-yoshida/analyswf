@@ -27,9 +27,7 @@ class SwfsController < ApplicationController
 
   def create
     swf_series = SwfSeries.find(params[:swf_series_id])
-    Swf.transaction do
-      @swf = Domain::Swf.create!(swf_series, params[:file].read)
-    end
+    @swf = Domain::Swf.create_in_transaction(swf_series, params[:file].read)
     redirect_to action: :show, id: @swf.id
   end
 
