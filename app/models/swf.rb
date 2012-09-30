@@ -25,5 +25,6 @@ end
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  swf_series_id :integer
+#  version       :integer          default(0), not null
 #
 
