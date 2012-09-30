@@ -28,7 +28,7 @@ class SwfsController < ApplicationController
   def create
     swf_series = SwfSeries.find(params[:swf_series_id])
     Swf.transaction do
-      @swf = create_swf(swf_series, params[:file].read)
+      @swf = Domain::Swf.create!(swf_series, params[:file].read)
     end
     redirect_to action: :show, id: @swf.id
   end
@@ -64,46 +64,5 @@ class SwfsController < ApplicationController
 
   def decode_prefixed(params, prefix)
     params.select{|k, v| /^#{prefix}/ =~ k}.extend(HashExtension).convert_keys{|k| k.sub(/^#{prefix}/, '')}
-  end
-
-  def create_swf(swf_series, swf_data)
-    swf = swf_series.swfs.create!
-    analyzed = analyze_swf(swf_data)
-    analyzed.jpeg_offsets.each do |o|
-      swf.offsets.create!(offset_type: TargetType::JPEG, value: o)
-    end
-    analyzed.gif_offsets.each do |o|
-      swf.offsets.create!(offset_type: TargetType::GIF, value: o)
-    end
-    swf.create_swf_binary!(data: swf_data)
-    return swf
-  end
-
-  def tmp_swf_dir
-    result = Rails.root.join('tmp', 'swf')
-    FileUtils.mkdir_p result
-    return result
-  end
-
-  def tmp_swf_file
-    tmp_swf_file = File.join(tmp_swf_dir, 'tmp.swf')
-  end
-
-  def analyze_swf(data)
-    do_analyze_swf(data)
-  rescue => e
-    delete_tmp_swf_file
-    raise ApplicationException.new "例外: #{e.message}"
-  end
-
-  def do_analyze_swf(data)
-    File.binwrite(tmp_swf_file, data)
-    result = Replacement::SwfAnalyzer.analyze_swf(tmp_swf_file)
-    delete_tmp_swf_file
-    return result
-  end
-
-  def delete_tmp_swf_file
-    File.delete(tmp_swf_file)
   end
 end
