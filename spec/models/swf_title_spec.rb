@@ -28,5 +28,6 @@ end
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  latest_swf_series_id :integer
+#  latest_swf_id        :integer
 #
 
